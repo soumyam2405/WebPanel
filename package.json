@@ -19,7 +19,9 @@
   "homepage": "https://github.com/soumyam2405/WebPanel#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
     "ejs": "^3.1.8",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1"
   }
 }

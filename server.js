@@ -1,6 +1,6 @@
 const express = require("express"),
   app = express();
-
+require('dotenv').config();
 //setting view engine to ejs
 app.set("view engine", "ejs");
 
