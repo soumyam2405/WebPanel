@@ -14,11 +14,11 @@ async function getFactions() {
 }
 
 async function createFaction(fac_id, fac_name, fac_tag, fac_createdAt) {
-    await factionModel.replaceOne({ fac_id }, {
-        fac_id,
-        fac_name,
-        fac_tag,
-        fac_createdAt
+    await factionModel.replaceOne({ id: fac_id }, {
+        id: fac_id,
+        name: fac_name,
+        tag: fac_tag,
+        createdAt: fac_createdAt
     }, {
         upsert: true
     });

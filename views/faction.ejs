@@ -18,106 +18,28 @@
                 </div>
             </div>
             <div class="ui cards">
+                <% for(const i of factions) { %>
                 <div class="card">
                     <div class="content">
                     <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
                     <div class="header">
-                        faction_name (faction_id)
+                        <%= i.name %> ( <%- i.id %> )
                     </div>
                     <div class="meta">
-                        faction_tag
+                        <%- i.tag %>
                     </div>
                     <div class="description">
-                        Created_At
+                        <%- i.createdAt %>
                     </div>
                     </div>
                     <div class="extra content">
                     <div class="ui two buttons">
-                        <div class="ui basic blue button">Edit</div>
-                        <div class="ui basic red button">Delete</div>
+                        <button value="<% i.id %>" class="ui basic blue button">Edit</button>
+                        <button class="ui basic red button">Delete</button>
                     </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="content">
-                    <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-                    <div class="header">
-                        faction_name
-                    </div>
-                    <div class="meta">
-                        faction_tag
-                    </div>
-                    <div class="description">
-                        Created_At
-                    </div>
-                    </div>
-                    <div class="extra content">
-                    <div class="ui two buttons">
-                        <div class="ui basic blue button">Edit</div>
-                        <div class="ui basic red button">Delete</div>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                    <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-                    <div class="header">
-                        faction_name
-                    </div>
-                    <div class="meta">
-                        faction_tag
-                    </div>
-                    <div class="description">
-                        Created_At
-                    </div>
-                    </div>
-                    <div class="extra content">
-                    <div class="ui two buttons">
-                        <div class="ui basic blue button">Edit</div>
-                        <div class="ui basic red button">Delete</div>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                    <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-                    <div class="header">
-                        faction_name
-                    </div>
-                    <div class="meta">
-                        faction_tag
-                    </div>
-                    <div class="description">
-                        Created_At
-                    </div>
-                    </div>
-                    <div class="extra content">
-                    <div class="ui two buttons">
-                        <div class="ui basic blue button">Edit</div>
-                        <div class="ui basic red button">Delete</div>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                    <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-                    <div class="header">
-                        faction_name
-                    </div>
-                    <div class="meta">
-                        faction_tag
-                    </div>
-                    <div class="description">
-                        Created_At
-                    </div>
-                    </div>
-                    <div class="extra content">
-                    <div class="ui two buttons">
-                        <div class="ui basic blue button">Edit</div>
-                        <div class="ui basic red button">Delete</div>
-                    </div>
-                    </div>
-                </div>
+                <% } %>
             </div>
         </div>
     </main>
