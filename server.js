@@ -28,7 +28,7 @@ app.get("/magic", function (req, res) {
 app.get("/faction", async function (req, res) {
   const pageTitle = 'Faction';
   const factionData = await getFactions();
-  console.log(factionData);
+  //console.log(factionData);
   res.render("faction", {
     pageTitle: pageTitle,
     factions: factionData
