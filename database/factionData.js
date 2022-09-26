@@ -10,7 +10,7 @@ const factionSchema = new mongoose.Schema({
 const factionModel = mongoose.model('factionModel', factionSchema, 'factionData');
 
 async function getFactions() {
-    return await factionModel.find({});
+    return await factionModel.find().sort({ tag: 1 });
 }
 
 async function createFaction(facId, facName, facTag, facCreatedAt) {

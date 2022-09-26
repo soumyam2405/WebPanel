@@ -19,12 +19,6 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/magic", function (req, res) {
-  res.render("magic", {
-    pageTitle: 'Magic'
-  });
-});
-
 app.get("/faction", async function (req, res) {
   const factionData = await getFactions();
   //console.log(factionData);
@@ -81,3 +75,8 @@ app.listen(8080, function () {
   console.log("Server is running on port 8080 ");
   main().catch(err => console.warn(err));
 });
+
+// const fdata = require('./factionData.json');
+// for (const i in fdata) {
+//   createFaction(i,null,fdata[i],new Date());
+// }
