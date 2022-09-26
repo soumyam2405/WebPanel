@@ -5,26 +5,29 @@
         <div class="ui segment">
             <h1>Faction List</h1>
             <div class="ui middle aligned divided list">
-                <div class="item">
+                <form class="item" method="POST" action="/faction/add">
                     <div class="right floated content">
-                        <div class="ui button">Add</div>
+                        <button type="submit" class="ui button">Add</button>
                     </div>
                     <img class="ui avatar image" src="#">
                     <div class="content">
                         <div class="ui input">
-                            <input type="text" placeholder="Faction Name">
+                            <input type="text" name="facName" placeholder="Faction Name">
                         </div>
                         <div class="ui input">
-                            <input type="text" placeholder="Faction Tag">
+                            <input type="text" name="facTag" placeholder="Faction Tag" required>
+                        </div>
+                        <div class="ui input">
+                            <input type="text" name="facId" placeholder="Faction ID" required>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="ui cards">
                 <% for(const i of factions) { %>
                 <div class="card">
                     <div class="content">
-                        <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+                        <img class="right floated mini ui image" src="https://cdn.mrkitts.xyz/files/cbpng/54.png">
                         <div class="header">
                             <%= i.name %> ( <%- i.id %> )
                         </div>
@@ -38,7 +41,7 @@
                     <div class="extra content">
                         <div class="ui two buttons">
                             <a class="ui basic blue button" href="/faction/edit/<%- i.id %>">Edit</a>
-                            <div class="ui basic red button" onclick="window.open('/faction/remove/<%- i.id %>','mywindow','menubar=1,resizable=1,width=500,height=500')">Delete</div>
+                            <a class="ui basic red button" href="/faction/remove/<%- i.id %>">Delete</a>
                         </div>
                     </div>
                 </div>

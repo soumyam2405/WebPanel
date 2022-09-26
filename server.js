@@ -34,12 +34,8 @@ app.get("/faction", async function (req, res) {
   });
 });
 
-app.get("/faction/edit", async function (req, res) {
-  res.send("Go Away :)");
-});
-
-app.get("/faction/remove", async function (req, res) {
-  res.send("Go Away :)");
+app.get(["/faction/edit","/faction/remove","/faction/add"], async function (req, res) {
+  res.redirect("/faction");
 });
 
 app.get("/faction/edit/:id", async function (req, res) {
@@ -50,13 +46,8 @@ app.get("/faction/edit/:id", async function (req, res) {
       currentData: fac
     });
   } else {
-    res.send('Error: No faction with that ID found! Go back to <a href="/faction">Faction</a>');
+    res.redirect('/');
   }
-});
-
-app.post("/faction/edit", async function (req, res) {
-  await createFaction(req.body.facId, req.body.facName, req.body.facTag, new Date());
-  res.redirect("/faction");
 });
 
 app.get("/faction/remove/:id", async function (req, res) {
@@ -67,14 +58,24 @@ app.get("/faction/remove/:id", async function (req, res) {
       currentData: fac
     });
   } else {
-    res.send('Error: No faction with that ID found! Go back to <a href="/faction">Faction</a>');
+    res.redirect('/');
   }
 });
 
-app.post("/faction/remove", async function (req, res) {
-  await removeFaction(req.body.id);
+app.post("/faction/edit", async function (req, res) {
+  await createFaction(req.body.facId, req.body.facName, req.body.facTag, new Date());
   res.redirect("/faction");
-})
+});
+
+app.post("/faction/remove", async function (req, res) {
+  await removeFaction(req.body.facId);
+  res.redirect("/faction");
+});
+
+app.post("/faction/add", async function (req, res) {
+  await createFaction(req.body.facId, req.body.facName, req.body.facTag, new Date());
+  res.redirect("/faction");
+});
 
 app.listen(8080, function () {
   console.log("Server is running on port 8080 ");
