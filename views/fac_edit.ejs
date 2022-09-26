@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/header'); %>
+    <main>
+        <div class="ui segment">
+            <form class="ui form" method="POST" action="/faction/edit">
+                <div class="fields">
+                  <div class="field">
+                    <label>Faction Name</label>
+                    <input type="text" name="facName" placeholder="Faction Name" value="<%- currentData.name %>">
+                  </div>
+                  <div class="field">
+                    <label>Faction Tag</label>
+                    <input type="text" name="facTag" placeholder="Faction Tag" value="<%- currentData.tag %>" required>
+                  </div>
+                  <div class="field">
+                    <label>Faction ID</label>
+                    <input type="text" name="facId" placeholder="Faction ID" value="<%- currentData.id %>" required>
+                  </div>
+                </div>
+                <button class="ui button" type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

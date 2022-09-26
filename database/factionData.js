@@ -24,7 +24,17 @@ async function createFaction(fac_id, fac_name, fac_tag, fac_createdAt) {
     });
 }
 
+async function findFaction(fac_id) {
+    return await factionModel.findOne({ id: fac_id});
+}
+
+async function removeFaction(fac_id) {
+    return await factionModel.remove({ id: fac_id });
+}
+
 module.exports = {
     getFactions,
-    createFaction
+    createFaction,
+    findFaction,
+    removeFaction
 }

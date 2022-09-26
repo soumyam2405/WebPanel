@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Faction Remover</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+    <body class="container">
+        <form class="ui form" method="POST" action="/faction/remove">
+            <div class="field">
+                <h2>Are you sure you want to remove "<%- currentData.name %>" (<%- currentData.id %>)?</h2>
+                <input type="text" disabled value="<%- currentData.id %>">
+            </div>
+            <button type="submit" class="negative ui button" onclick="window.close()">Delete</button>
+            <button class="ui button" onclick="window.close()">Close</button>
+        </form>
+    </body>
+</html>

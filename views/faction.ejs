@@ -14,6 +14,9 @@
                         <div class="ui input">
                             <input type="text" placeholder="Faction Name">
                         </div>
+                        <div class="ui input">
+                            <input type="text" placeholder="Faction Tag">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,22 +24,22 @@
                 <% for(const i of factions) { %>
                 <div class="card">
                     <div class="content">
-                    <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-                    <div class="header">
-                        <%= i.name %> ( <%- i.id %> )
-                    </div>
-                    <div class="meta">
-                        <%- i.tag %>
-                    </div>
-                    <div class="description">
-                        <%- new Date(i.createdAt).toDateString() %>
-                    </div>
+                        <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+                        <div class="header">
+                            <%= i.name %> ( <%- i.id %> )
+                        </div>
+                        <div class="meta">
+                            <%- i.tag %>
+                        </div>
+                        <div class="description">
+                            <%- new Date(i.createdAt).toDateString() %>
+                        </div>
                     </div>
                     <div class="extra content">
-                    <div class="ui two buttons">
-                        <div class="ui basic blue button">Edit</div>
-                        <div class="ui basic red button">Delete</div>
-                    </div>
+                        <div class="ui two buttons">
+                            <a class="ui basic blue button" href="/faction/edit/<%- i.id %>">Edit</a>
+                            <div class="ui basic red button" onclick="window.open('/faction/remove/<%- i.id %>','mywindow','menubar=1,resizable=1,width=500,height=500')">Delete</div>
+                        </div>
                     </div>
                 </div>
                 <% } %>
