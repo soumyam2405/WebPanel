@@ -22,7 +22,7 @@ app.get("/", function (req, res) {
 app.get("/faction", async function (req, res) {
   const factionData = await getFactions();
   //console.log(factionData);
-  res.render("faction", {
+  res.render("faction/faction", {
     pageTitle: 'Faction',
     factions: factionData
   });
@@ -35,7 +35,7 @@ app.get(["/faction/edit","/faction/remove","/faction/add"], async function (req,
 app.get("/faction/edit/:id", async function (req, res) {
   const fac = await findFaction(req.params.id);
   if(fac) {
-    res.render("fac_edit", {
+    res.render("facEdit", {
       pageTitle: 'FactionEditor',
       currentData: fac
     });
@@ -47,7 +47,7 @@ app.get("/faction/edit/:id", async function (req, res) {
 app.get("/faction/remove/:id", async function (req, res) {
   const fac = await findFaction(req.params.id);
   if(fac) {
-    res.render("fac_remove", {
+    res.render("faction/facRemove", {
       pageTitle: 'Faction Remover',
       currentData: fac
     });

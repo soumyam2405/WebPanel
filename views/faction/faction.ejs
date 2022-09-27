@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/header'); %>
+    <%- include('../partials/header'); %>
     <main>
         <div class="ui segment">
             <h1>Faction List</h1>
@@ -9,7 +9,7 @@
                     <div class="right floated content">
                         <button type="submit" class="ui button">Add</button>
                     </div>
-                    <img class="ui avatar image" src="#">
+                    <!-- <img class="ui avatar image" src="#"> -->
                     <div class="content">
                         <div class="ui input">
                             <input type="text" name="facName" placeholder="Faction Name">
@@ -27,7 +27,7 @@
                 <% for(const i of factions) { %>
                 <div class="card">
                     <div class="content">
-                        <img class="right floated mini ui image" src="https://cdn.mrkitts.xyz/files/cbpng/54.png">
+                        <img class="right floated mini ui image" src="https://cdn.mrkitts.xyz/files/cbpng/54.jpg">
                         <div class="header">
                             <%= i.tag %> ( <%- i.id %> )
                         </div>
@@ -50,6 +50,6 @@
         </div>
     </main>
     
-    <%- include('./partials/footer'); %>
+    <%- include('../partials/footer'); %>
 </body>
 </html>
