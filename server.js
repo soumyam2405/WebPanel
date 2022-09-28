@@ -45,7 +45,7 @@ app.get(["/faction/edit","/faction/remove","/faction/add"], async function (req,
 app.get("/faction/edit/:id", async function (req, res) {
   const fac = await findFaction(req.params.id);
   if(fac) {
-    res.render("facEdit", {
+    res.render("faction/facEdit", {
       pageTitle: 'FactionEditor',
       currentData: fac
     });
@@ -79,6 +79,18 @@ app.post("/faction/remove", async function (req, res) {
 app.post("/faction/add", async function (req, res) {
   await createFaction(req.body.facId, req.body.facName, req.body.facTag, new Date());
   res.redirect("/faction");
+});
+
+app.get("/staff", async function (req, res) {
+  res.render("staff/staff", {
+    pageTitle: 'Staff'
+  });
+});
+
+app.get("/manager", async function (req, res) {
+  res.render("manager/manager", {
+    pageTitle: 'Manager'
+  });
 });
 
 app.listen(8080, function () {
