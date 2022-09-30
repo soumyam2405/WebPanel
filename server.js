@@ -1,11 +1,10 @@
-const express = require("express"),
-  app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
-const http = require('http');
+const express = require("express");
+const subdomain = require('express-subdomain');
+var app = express();
 const { getFactions, createFaction, findFaction, removeFaction } = require("./database/factionData");
 const fs = require("fs");
-const { env } = require("process");
 
 const main = async () => {
   await mongoose.connect(process.env.MONGO_URI);
@@ -15,13 +14,9 @@ const main = async () => {
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: false }));
+app.portal = express.Router();
+app.use(subdomain('portal', app.portal));
 
-if(process.env.MODE == 'PROD') {
-  http.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/portal.tycoonstats.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/portal.tycoonstats.com/cert.pem')
-  }, app);
-}
 
 app.get("/", function (req, res) {
   res.render("index", {
@@ -87,7 +82,7 @@ app.get("/staff", async function (req, res) {
   });
 });
 
-app.get("/manager", async function (req, res) {
+app.portal.get("/", async function (req, res) {
   res.render("manager/manager", {
     pageTitle: 'Manager'
   });
