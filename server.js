@@ -18,13 +18,17 @@ app.portal = express.Router();
 app.use(subdomain('portal', app.portal));
 
 
-app.get("/", function (req, res) {
+// app.get("/", function (req, res) {
+//   res.send('Onichan <3');
+// });
+
+app.portal.get("/", function (req, res) {
   res.render("index", {
     pageTitle: 'Home'
   });
 });
 
-app.get("/faction", async function (req, res) {
+app.portal.get("/faction", async function (req, res) {
   const factionData = await getFactions();
   //console.log(factionData);
   res.render("faction/faction", {
@@ -33,11 +37,11 @@ app.get("/faction", async function (req, res) {
   });
 });
 
-app.get(["/faction/edit","/faction/remove","/faction/add"], async function (req, res) {
+app.portal.get(["/faction/edit","/faction/remove","/faction/add"], async function (req, res) {
   res.redirect("/faction");
 });
 
-app.get("/faction/edit/:id", async function (req, res) {
+app.portal.get("/faction/edit/:id", async function (req, res) {
   const fac = await findFaction(req.params.id);
   if(fac) {
     res.render("faction/facEdit", {
@@ -49,7 +53,7 @@ app.get("/faction/edit/:id", async function (req, res) {
   }
 });
 
-app.get("/faction/remove/:id", async function (req, res) {
+app.portal.get("/faction/remove/:id", async function (req, res) {
   const fac = await findFaction(req.params.id);
   if(fac) {
     res.render("faction/facRemove", {
@@ -61,28 +65,28 @@ app.get("/faction/remove/:id", async function (req, res) {
   }
 });
 
-app.post("/faction/edit", async function (req, res) {
+app.portal.post("/faction/edit", async function (req, res) {
   await createFaction(req.body.facId, req.body.facName, req.body.facTag, new Date());
   res.redirect("/faction");
 });
 
-app.post("/faction/remove", async function (req, res) {
+app.portal.post("/faction/remove", async function (req, res) {
   await removeFaction(req.body.facId);
   res.redirect("/faction");
 });
 
-app.post("/faction/add", async function (req, res) {
+app.portal.post("/faction/add", async function (req, res) {
   await createFaction(req.body.facId, req.body.facName, req.body.facTag, new Date());
   res.redirect("/faction");
 });
 
-app.get("/staff", async function (req, res) {
+app.portal.get("/staff", async function (req, res) {
   res.render("staff/staff", {
     pageTitle: 'Staff'
   });
 });
 
-app.portal.get("/", async function (req, res) {
+app.portal.get("/manager", async function (req, res) {
   res.render("manager/manager", {
     pageTitle: 'Manager'
   });
